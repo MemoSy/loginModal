@@ -11,7 +11,7 @@ export const settings = async (values: z.infer<typeof SettingsSchema>) => {
 
   if (!user) {
     return {
-      error: "You must be logged in to update your settings.",
+      error: "يجب عليك تسجيل الدخول لتحديث إعداداتك.",
     };
   }
 
@@ -20,7 +20,7 @@ export const settings = async (values: z.infer<typeof SettingsSchema>) => {
 
   if (!dbUser) {
     return {
-      error: "You must be logged in to update your settings.",
+      error: "يجب عليك تسجيل الدخول لتحديث إعداداتك.",
     };
   }
 
@@ -34,6 +34,40 @@ export const settings = async (values: z.infer<typeof SettingsSchema>) => {
   });
 
   return {
-    success: "Settings updated.",
+    success: "تم تحديث البيانات",
+  };
+};
+
+
+
+export const removeImage = async () => {
+  const user = await currentUser();
+
+  if (!user) {
+    return {
+      error: "يجب عليك تسجيل الدخول لتحديث إعداداتك.",
+    };
+  }
+
+  //@ts-ignore
+  const dbUser = await getUserById(user.id);
+
+  if (!dbUser) {
+    return {
+      error: "يجب عليك تسجيل الدخول لتحديث إعداداتك.",
+    };
+  }
+
+  await db.user.update({
+    where: {
+      id: dbUser.id,
+    },
+    data: {
+      image: "",
+    },
+  });
+
+  return {
+    success: "تم تحديث البيانات",
   };
 };

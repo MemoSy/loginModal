@@ -5,13 +5,13 @@ import * as z from "zod";
 import { getUserByEmail } from "@/data/user";
 import { sendPasswordResetEmail } from "@/lib/mail";
 import { generatePasswordResetToken } from "@/lib/tokens";
-import { ResetSchema } from "@/lib";
+import { ResetSchema } from "@/lib"
 
 export const reset = async (values: z.infer<typeof ResetSchema>) => {
   const validatedFields = ResetSchema.safeParse(values);
 
   if (!validatedFields.success) {
-    return { error: "Invalid emaiL!" };
+    return { error: "بريد إلكتروني خاطئ!" };
   }
 
   const { email } = validatedFields.data;
@@ -28,5 +28,5 @@ export const reset = async (values: z.infer<typeof ResetSchema>) => {
     passwordResetToken.token,
   );
 
-  return { success: "Reset email sent!" };
+  return { success: "تم إرسال إعادة تعيين البريد الإلكتروني " };
 }

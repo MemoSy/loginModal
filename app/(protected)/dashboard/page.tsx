@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/select";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { settings } from "@/actions/settings";
+import { removeImage, settings } from "@/actions/settings";
 import {
   Form,
   FormField,
@@ -48,7 +48,7 @@ const SettingsPage = () => {
     resolver: zodResolver(SettingsSchema),
     defaultValues: {
       name: user?.name || undefined,
-      image: user?.image || undefined,
+      image: "",
       email: user?.email || undefined,
       role: user?.role || undefined,
       // @ts-ignore
@@ -57,6 +57,8 @@ const SettingsPage = () => {
   });
 
   async function handleFileUpload(event: any) {
+    await removeImage()
+    
     const fileInput = event.target.files;
     const formData = new FormData();
 
@@ -211,14 +213,6 @@ const SettingsPage = () => {
                 id="image-preview"
                 className="max-w-sm p-6 mb-4 bg-gray-100 border-dashed border-2 border-gray-400 rounded-lg items-center mx-auto text-center cursor-pointer"
               >
-                {user?.image && (
-                  <Avatar>
-                    <AvatarImage src={user?.image || ""} />
-                    <AvatarFallback className="bg-sky-500">
-                      <FaUser className="text-white" />
-                    </AvatarFallback>
-                  </Avatar>
-                )}
                 <input
                   id="upload"
                   type="file"

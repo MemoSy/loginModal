@@ -11,7 +11,7 @@ export default async function login(values: z.infer<typeof formSchema>) {
 
   if (!validatedValues.success) {
     return {
-      error: "Invalid form data",
+      error: "بيانات النموذج غير صالحة",
     };
   }
 
@@ -28,5 +28,5 @@ export default async function login(values: z.infer<typeof formSchema>) {
 
   await sendVerificationEmail(verificationToken.email, verificationToken.token);
 
-  return { success: "Verification Sent!" };
+  return { success: "تم إرسال التحقق!" };
 }

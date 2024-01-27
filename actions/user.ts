@@ -30,11 +30,11 @@ export const editUser = async (id: string, data: any) => {
 
     if (!user) {
         return {
-            error: "User not found"
+            error: "لم يتم العثور على المستخدم"
         }
     }
 
     return {
-        success: "User updated"
+        success: "تم تحديث البيانات"
     }
 }

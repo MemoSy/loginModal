@@ -8,21 +8,21 @@ export default async function newVerification(token: string) {
   const existingToken = await getVerificationTokenByToken(token);
 
   if (!existingToken) {
-    return { error: "Token does not exist!" };
+    return { error: "الرمز غير موجود!" };
   }
 
   // @ts-ignore
   const hasExpired = new Date(existingToken.expires) < new Date();
 
   if (hasExpired) {
-    return { error: "Token has expired!" };
+    return { error: "انتهت صلاحية الرمز المميز!" };
   }
 
   // @ts-ignore
   const existingUser = await getUserByEmail(existingToken.email);
 
   if (!existingUser) {
-    return { error: "Email does not exist!" };
+    return { error: "البريد الإلكتروني غير موجود!" };
   }
 
   await db.user.update({
@@ -39,5 +39,5 @@ export default async function newVerification(token: string) {
     where: { id: existingToken.id }
   });
 
-  return { success: "Email verified!" };
+  return { success: "تم التحقق من البريد الإلكتروني!" };
 };

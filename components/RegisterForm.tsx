@@ -69,7 +69,7 @@ const RegisterForm = () => {
 
   return (
     <div className="w-[450px] border p-8 bg-slate-100 rounded-lg shadow-lg">
-      <h1 className="text-center text-2xl font-semibold text-sky-800">Login</h1>
+      <h1 className="text-center text-2xl font-semibold text-sky-800">تسجيل دخول</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           {!showTwoFactor ? (
