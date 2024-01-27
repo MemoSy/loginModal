@@ -23,4 +23,5 @@ export const SettingsSchema = z.object({
   isTwoFactorEnabled: z.optional(z.boolean()),
   role: z.enum(["ADMIN", "USER", "SUPERVISOR"]),
   email: z.optional(z.string().email()),
+  image: z.optional(z.string()),
 });

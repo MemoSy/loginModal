@@ -7,10 +7,10 @@ export const sendVerificationEmail = async (email: string, token: string) => {
   const confirmLink = `http://localhost:3000/auth/new-verification?token=${token}`;
 
   await resend.emails.send({
-    from: "whatever@codelam.tech",
+    from: "mahmud@codelam.tech",
     to: email,
-    subject: "Confirm Your Emil 🎉🎉",
-    html: `<p>Click <a href="${confirmLink}">Here</a>To Confirm Email.</p>`,
+    subject: "قم بتأكيد بريدك الإلكتروني 🎉🎉",
+    html: `<p>إضغط <a href="${confirmLink}">هنا </a>لتفعيل الإيميل.</p>`,
   });
 };
 
@@ -19,10 +19,10 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
 
   try {
     await resend.emails.send({
-      from: "whatever@codelam.tech",
+      from: "mahmud@codelam.tech",
       to: email,
-      subject: "Reset your password",
-      text: `Click here to reset password: ${resetLink}`,
+      subject: "اعد ضبط كلمه السر",
+      text: `انقر هنا لإعادة تعيين كلمة المرور: ${resetLink}`,
     });
   } catch (error) {
     return console.log(error);
@@ -33,7 +33,7 @@ export const sendTwoFactorEmail = async (email: string, token: string) => {
   await resend.emails.send({
     from: "memo@codelam.tech",
     to: email,
-    subject: "Two Factor Authentication",
-    html: `<p>Your two factor authentication code is: ${token}</p>`,
+    subject: "المصادقة الثنائية ",
+    html: `<p>رمز المصادقة الثنائي الخاص بك هو: ${token}</p>`,
   });
 };

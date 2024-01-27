@@ -80,6 +80,7 @@ export const {
       if (session.user) {
         session.user.name = token.name;
         session.user.email = token.email;
+        session.user.image = token.picture;
         // @ts-ignore
         session.user.isOAuth = token.isOAuth as boolean;
       }
@@ -97,6 +98,7 @@ export const {
       token.isOAuth = !!account;
       token.name = user.name;
       token.email = user.email;
+      token.picture = user.image;
       token.role = user.role;
       token.isTwoFactorEnabled = user.isTwoFactorEnabled;
 

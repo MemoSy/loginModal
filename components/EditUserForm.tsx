@@ -69,7 +69,7 @@ const EditUserForm = ({ user, role }: { user: any; role: any }) => {
           });
       });
     } else {
-      toast.error("You are not an admin");
+      toast.error("لاتملك الصلاحية");
     }
   }
   return (
@@ -82,7 +82,7 @@ const EditUserForm = ({ user, role }: { user: any; role: any }) => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>الإسم</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -99,7 +99,7 @@ const EditUserForm = ({ user, role }: { user: any; role: any }) => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>الإيميل</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -117,7 +117,7 @@ const EditUserForm = ({ user, role }: { user: any; role: any }) => {
               name="role"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Role</FormLabel>
+                  <FormLabel>الصلاحية</FormLabel>
                   <Select
                     disabled={isPending}
                     onValueChange={field.onChange}
@@ -129,11 +129,11 @@ const EditUserForm = ({ user, role }: { user: any; role: any }) => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value={UserRole.ADMIN}>Admin</SelectItem>
+                      <SelectItem value={UserRole.ADMIN}>مدير</SelectItem>
                       <SelectItem value={UserRole.SUPERVISOR}>
-                        Supervisor
+                        مشرف
                       </SelectItem>
-                      <SelectItem value={UserRole.USER}>User</SelectItem>
+                      <SelectItem value={UserRole.USER}>مستخدم</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -146,7 +146,7 @@ const EditUserForm = ({ user, role }: { user: any; role: any }) => {
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
                   <div className="space-y-0.5">
-                    <FormLabel>Two Factor</FormLabel>
+                    <FormLabel>مصادقة ثنائية</FormLabel>
                     <FormDescription>
                       Enable two factor authentication
                     </FormDescription>
@@ -165,7 +165,7 @@ const EditUserForm = ({ user, role }: { user: any; role: any }) => {
           <FormError message={error} />
           <FormSuccess message={success} />
           <Button disabled={isPending} type="submit">
-            Save
+            حفظ
           </Button>
         </form>
       </Form>
